@@ -35,13 +35,18 @@ const inicializaCronometro = () => {
             tempoRestante--;
             $("#tempo-digitacao").text(tempoRestante);
             if (tempoRestante <= 0) {
-                campo.attr("disabled", true);
-                clearInterval(cronometroID)
+                clearInterval(cronometroID);
                 $("#botao-reniciar").attr("disabled", false);
-                campo.toggleClass("campo-desativado");
+                finalizaJogo();
             }
         }, 1000);
     });
+};
+
+const finalizaJogo = () => {
+    campo.attr("disabled", true);
+    campo.toggleClass("campo-desativado");
+    inserePlacar();
 };
 
 const inicializaMarcadores = () => {
@@ -59,6 +64,8 @@ const inicializaMarcadores = () => {
         }
     });
 };
+
+
 
 const reniciaJogo = () => {
     campo.attr("disabled", false);
