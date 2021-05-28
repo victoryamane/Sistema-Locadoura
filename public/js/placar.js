@@ -1,3 +1,5 @@
+$("#botao-placar").click(mostraPlacar);
+
 const inserePlacar = () => {
     const corpoTabela = $(".placar").find("tbody");
     const usuario = "Victor"
@@ -7,6 +9,17 @@ const inserePlacar = () => {
     linha.find(".botao-remover").click(removeLinha);
 
     corpoTabela.append(linha);
+    $(".placar").slideDown(500);
+    scrollPlacar();
+}
+
+const scrollPlacar = () => {
+    const posicaoPlacar = $(".placar").offset().top;
+
+    $("html, body").animate(
+        {
+            scrollTop: posicaoPlacar
+        }, 1000);
 }
 
 const novaLinha = (usuario, palavras) => {
@@ -31,5 +44,14 @@ const novaLinha = (usuario, palavras) => {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent().parent().remove();
+    const linha = $(this).parent().parent();
+    linha.fadeOut();
+    setTimeout(() => {
+        linha.remove();
+    }, 1000);
+
+}
+
+function mostraPlacar() {
+    $(".placar").stop().slideToggle(600);
 }
