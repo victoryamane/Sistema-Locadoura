@@ -1,4 +1,4 @@
-const tempoInicial = $("#tempo-digitacao").text();
+let tempoInicial = $("#tempo-digitacao").text();
 const campo = $(".campo-digitacao");
 
 $(() => {
@@ -9,6 +9,12 @@ $(() => {
         $("#botao-reniciar").click(reniciaJogo);
     }
 );
+
+const atualizaTempoInicial = (tempo) => {
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempo);
+
+};
 
 const atualizaTamanhoFrase = () => {
     const frase = $(".frase").text();
@@ -28,8 +34,9 @@ const inicializaContadores = () => {
 };
 
 const inicializaCronometro = () => {
-    let tempoRestante = $("#tempo-digitacao").text();
+
     campo.one("focus", () => {
+        let tempoRestante = $("#tempo-digitacao").text();
         $("#botao-reniciar").attr("disabled", true);
         const cronometroID = setInterval(() => {
             tempoRestante--;
@@ -50,8 +57,8 @@ const finalizaJogo = () => {
 };
 
 const inicializaMarcadores = () => {
-    const frase = $(".frase").text();
     campo.on("input", () => {
+        const frase = $(".frase").text();
         const digitado = campo.val();
         const comparavel = frase.substr(0, digitado.length);
 
