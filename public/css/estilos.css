@@ -41,3 +41,25 @@ body {
 #spinner {
     display: none;
 }
+
+#frase-id {
+    width: 40px;
+}
+
+#botao-sync {
+    float: right;
+}
+
+.select-usuario {
+    display: inline-block;
+}
+
+.selectize-input {
+    width: 150px;
+    vertical-align: middle;
+}
+
+#usuarios {
+    display: block;
+}
+

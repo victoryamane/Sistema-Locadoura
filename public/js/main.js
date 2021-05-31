@@ -7,8 +7,17 @@ $(() => {
         inicializaCronometro();
         inicializaMarcadores();
         $("#botao-reniciar").click(reniciaJogo);
-    }
-);
+        atualizaPlacar();
+
+        $("#usuarios").selectize({
+            create: true,
+            sortField: "text"
+        });
+
+        $(".tooltip").tooltipster({
+            trigger: "custom"
+        });
+    });
 
 const atualizaTempoInicial = (tempo) => {
     tempoInicial = tempo;
